@@ -89,14 +89,13 @@
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Id value greater than zero\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.id).to.be.greaterThan(0);\r",
-							"});\r",
-							"\r",
 							"pm.test(\"Username is correct\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.userName).to.be.equal(pm.environment.get(\"Username\"));\r",
+							"    pm.expect(jsonData.username).to.be.equal(pm.environment.get(\"Username\"));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"token key in response\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"token\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -302,7 +301,11 @@
 							"\r",
 							"pm.test(\"Username is correct\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.userName).to.be.equal(pm.environment.get(\"Username\"));\r",
+							"    pm.expect(jsonData.username).to.be.equal(pm.environment.get(\"Username\"));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"token key in response\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"token\");\r",
 							"});"
 						],
 						"type": "text/javascript"
