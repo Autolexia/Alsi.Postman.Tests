@@ -63,7 +63,13 @@
 			],
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "au",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
 				"url": {
 					"raw": "{{baseUrl}}/api/users/1",
 					"host": [
@@ -96,7 +102,10 @@
 							"\r",
 							"pm.test(\"token key in response\", function () {\r",
 							"    pm.expect(pm.response.text()).to.include(\"token\");\r",
-							"});"
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.environment.set(\"token\", jsonData[\"token\"]);"
 						],
 						"type": "text/javascript"
 					}
@@ -306,7 +315,10 @@
 							"\r",
 							"pm.test(\"token key in response\", function () {\r",
 							"    pm.expect(pm.response.text()).to.include(\"token\");\r",
-							"});"
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.environment.set(\"token\", jsonData[\"token\"]);"
 						],
 						"type": "text/javascript"
 					}
